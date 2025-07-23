@@ -1,0 +1,192 @@
+.interviewee-sidebar {
+  width: 18rem;
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px) brightness(1.1);
+  -webkit-backdrop-filter: blur(25px) brightness(1.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem 0 0 1.5rem;
+  padding: 2.5rem 1.2rem 1.5rem 1.2rem;
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.3);
+  color: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  transition: width 0.3s ease-in-out;
+}
+
+.interviewee-sidebar::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+  filter: blur(60px);
+  animation: rotateGlow 25s linear infinite reverse;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.sidebar-brand {
+  padding: 1rem 1.2rem 2rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  text-align: center;
+  color: #FFD700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  color: rgba(255, 255, 255, 0.75);
+  border-radius: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 215, 0, 0.08);
+  color: #FFD700;
+  transform: translateX(5px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-link.active {
+  background: linear-gradient(90deg, #FFD700 0%, #f7c600 100%);
+  color: #1a1a1a;
+  font-weight: 700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+  transform: translateX(0);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-link svg {
+  font-size: 1.2rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.sidebar-link.active svg {
+  color: #1a1a1a;
+}
+
+.sidebar-utility {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 0.5rem;
+}
+
+.sidebar-utility .sidebar-link {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.2rem;
+}
+
+.sidebar-logout {
+  margin-top: auto;
+  padding: 2rem 1rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-logout button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border-radius: 1rem;
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sidebar-logout button:hover {
+  color: #ff6b6b;
+  background-color: rgba(255, 77, 79, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(255, 77, 79, 0.2);
+}
+
+.sidebar-logout button:active {
+  transform: translateY(0);
+}
+
+.sidebar-logout button svg {
+  font-size: 1.3rem;
+}
+
+@media (max-width: 1024px) {
+  .interviewee-sidebar {
+    width: 16rem;
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .sidebar-link {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  .sidebar-link svg {
+    font-size: 1.1rem;
+  }
+  .sidebar-utility .sidebar-link {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+  .sidebar-logout button {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+  .sidebar-logout button svg {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .interviewee-sidebar {
+    position: fixed;
+    left: -18rem;
+    top: 0;
+    bottom: 0;
+    width: 18rem;
+    z-index: 1000;
+    border-radius: 0 1.5rem 1.5rem 0;
+    transition: left 0.3s ease-in-out;
+  }
+
+  .interviewee-sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+}
