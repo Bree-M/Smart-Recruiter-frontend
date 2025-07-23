@@ -1,0 +1,26 @@
+#interviewee-grid-layout-container {
+  display: grid;
+  grid-template-columns: 18rem 1fr;
+  grid-template-rows: 1fr;
+  height: 100vh;
+  overflow: hidden;
+}
+
+#right-content-panel {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+#header-top-bar {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+#main-view-area {
+  flex: 1;
+  overflow: auto;
+}

@@ -1,14 +1,21 @@
 import { Outlet } from "react-router-dom";
 import IntervieweeSidebar from "../components/IntervieweeSidebar";
 import IntervieweeHeader from "../components/IntervieweeHeader";
+import "./IntervieweeLayout.css";
 
 export default function IntervieweeLayout() {
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div id="interviewee-grid-layout-container" className="grid h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+      
       <IntervieweeSidebar />
-      <div className="flex-1 flex flex-col">
-        <IntervieweeHeader />
-        <main className="flex-1 overflow-y-auto p-6">
+
+      <div id="right-content-panel" className="flex flex-col flex-1 min-h-0">
+        
+        <header id="header-top-bar" className="p-4">
+          <IntervieweeHeader />
+        </header>
+
+        <main id="main-view-area" className="flex-1 flex justify-center items-center overflow-auto p-4">
           <Outlet />
         </main>
       </div>
