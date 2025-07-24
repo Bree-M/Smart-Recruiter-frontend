@@ -1,0 +1,317 @@
+/* --- Global & Base Styles (Moved from glass-ui.css) --- */
+
+/* Best practices: Universal box-sizing, smooth scrolling, and font rendering */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #0d0d0d; /* Slightly off-black for depth */
+  line-height: 1.6;
+  color: #f0f0f0; /* Default text color for the page */
+}
+
+/* --- Glass Page Layout --- */
+.glass-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1.5rem; /* Generous padding for smaller screens */
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%); /* Subtle gradient for depth */
+}
+
+/* --- Glass Card Styling (Core of Glassmorphism) --- */
+.glass-card {
+  position: relative;
+  max-width: 480px; /* Wider card for more form inputs */
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem; /* Softer rounded corners */
+  border: 1px solid rgba(255, 255, 255, 0.15); /* Slightly more opaque border */
+  backdrop-filter: blur(25px) brightness(1.1);
+  -webkit-backdrop-filter: blur(25px) brightness(1.1);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  overflow: hidden; /* Important for glass-blur pseudo-element */
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55);
+}
+
+.glass-blur {
+  position: absolute;
+  top: -20%;
+  left: -20%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.15) 0%, transparent 50%),
+              radial-gradient(circle at 30% 70%, rgba(0, 191, 255, 0.1) 0%, transparent 50%); /* Subtle dual color radial gradients */
+  filter: blur(80px); /* Heavy blur to create soft glows */
+  animation: rotateGlow 20s linear infinite; /* Slow rotation for dynamism */
+  pointer-events: none; /* Allows clicks to pass through */
+  z-index: -1; /* Behind other content */
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.glass-title {
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 800;
+  color: #FFD700; /* Gold color */
+  text-align: center;
+  margin-bottom: 1.5rem; /* Adjust spacing */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+}
+
+.glass-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Consistent spacing between input groups */
+  margin-top: 1.5rem; /* Space from title */
+}
+
+/* --- Button Styling (Core shared button styles) --- */
+.glass-button {
+  position: relative;
+  padding: 0.9rem 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.15rem;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 1rem;
+  z-index: 1;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+
+/* Primary button specific styles (for Register and Continue buttons) */
+.glass-button.primary {
+  background: transparent; /* Start with transparent background */
+  color: #FFD700; /* Gold text */
+  border: 2px solid #FFD700; /* Gold border */
+  margin-top: 1.5rem; /* Space from last input */
+}
+
+.glass-button.primary::before {
+  content: "";
+  background: transparent; /* We'll use box-shadow for the fill, so transparent background for ::before */
+  position: absolute;
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  width: 0.1em; /* Start very small */
+  height: 0.1em; /* Start very small */
+  transform: translate(-50%, -50%) scale(0); /* Center and hide initially */
+  border-radius: 50%;
+  display: block; /* Ensure it's treated as a block for sizing */
+  transition: box-shadow 0.5s ease-out, transform 0.5s ease-out; /* Transition for the box-shadow expansion */
+  z-index: -1; /* Behind the button text */
+}
+
+.glass-button.primary:hover {
+  color: #0d0d0d; /* Dark text on hover */
+  background-color: transparent; /* Keep button background transparent to let ::before show */
+  border-color: #FFD700; /* Maintain gold border */
+  box-shadow: none; /* Remove previous box-shadow if any */
+  transform: none; /* Remove previous transform if any */
+}
+
+.glass-button.primary:hover::before {
+  box-shadow: inset 0 0 0 15em #FFD700; /* Inset shadow expands to fill */
+  transform: translate(-50%, -50%) scale(1); /* Ensure it's scaled to its original small size */
+}
+
+/* Disabled button state */
+.glass-button:disabled {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.3);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+.glass-button:disabled::before {
+  box-shadow: none !important;
+  transform: translate(-50%, -50%) scale(0) !important;
+}
+
+.glass-button:focus-visible {
+  outline: 2px solid #FFD700;
+  outline-offset: 3px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.glass-footer {
+  text-align: center;
+  margin-top: 1.8rem; /* Space from button */
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.glass-link {
+  color: #FFD700; /* Gold link color */
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+}
+
+.glass-link:hover {
+  color: #FFE033; /* Slightly brighter gold on hover */
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* --- Specific styles for the Register Page (Your component-specific overrides) --- */
+
+.register-page {
+  /* You can add specific background or layout adjustments for register page here
+     if it needs to differ from the general .glass-page styles */
+}
+
+.register-card {
+  /* Specific card adjustments if the register card needs to differ
+     from the general .glass-card styles. For example: */
+  max-width: 480px; /* Ensure it's wide enough for the form */
+}
+
+.register-form {
+  /* Any specific form layout or spacing adjustments for register page */
+}
+
+.register-button {
+  /* Any specific button styling for the register button that differs from .glass-button.primary */
+  /* For example, if you want a different margin-top for this specific button */
+  margin-top: 1.5rem; /* Ensure consistent spacing from the last input */
+}
+
+/* Input group styling for error messages */
+.input-group {
+  position: relative; /* Essential for positioning error messages */
+  margin-bottom: 0.5rem; /* Small gap between input group, actual gap handled by form */
+}
+
+/* --- Input styles for forms (Updated with Uiverse.io design) --- */
+.glass-form input {
+  /* From Uiverse.io by cohencoo */
+  border-radius: 10px;
+  outline: none; /* Use your desired gold/yellow color */
+  border: 0; /* Remove default border */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: #e2e2e2; /* Light grey background */
+  outline-offset: 3px;
+  padding: 10px 1rem;
+  transition: 0.25s;
+
+  /* Keep existing styles that are still relevant or override */
+  width: 100%;
+  color: #333; /* Change text color to dark for contrast on light background */
+  font-size: 1rem;
+}
+
+.glass-form input::placeholder {
+  color: #888; /* Darker placeholder for contrast */
+}
+
+.glass-form input:focus {
+  outline-offset: 5px;
+  background-color: #fff; /* White background on focus */
+}
+
+/* Validation states - adjusted for the new input style */
+.glass-form input.invalid,
+.glass-form input[aria-invalid="true"] {
+  outline: 2px solid #dc3545; /* Red outline for errors */
+  outline-offset: 3px; /* Keep consistent offset for errors */
+  border: 0; /* Ensure no conflicting border */
+}
+
+.error-message {
+  color: #dc3545; /* Red text for errors */
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Conditional role text styling */
+.glass-role-text {
+  text-align: center;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8); /* Keep light color as it's outside the input */
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.highlight-role {
+  color:greenyellow;
+  font-weight: 700;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 600px) {
+  .register-card {
+    padding: 2rem 1.5rem;
+    border-radius: 1.5rem;
+  }
+
+  .glass-title {
+    font-size: clamp(1.5rem, 7vw, 2.2rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .glass-role-text {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .glass-form {
+    gap: 1rem;
+  }
+
+  .glass-form input {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .register-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .glass-footer {
+    margin-top: 1.5rem;
+    font-size: 0.85rem;
+  }
+}
