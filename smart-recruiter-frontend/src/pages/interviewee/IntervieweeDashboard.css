@@ -1,0 +1,14 @@
+.glass-card.interviewee-dashboard-content {
+  width: 90%;
+  max-width: 600px;
+  margin: auto !important; 
+  text-align: center !important; 
+  height: fit-content;
+  align-self: center !important; 
+  justify-self: center !important; 
+}
+
+.glass-card.interviewee-dashboard-content .glass-title,
+.glass-card.interviewee-dashboard-content .glass-subtitle {
+  text-align: center !important; 
+}

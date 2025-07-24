@@ -1,9 +1,11 @@
 import { Bell, User, Search, ChevronDown } from "lucide-react";
 import { useState } from "react";
+import { createPortal } from 'react-dom';
 import "./IntervieweeHeader.css";
 
 export default function IntervieweeHeader() {
   const [showNotifications, setShowNotifications] = useState(false);
+  const [showProfileDropdown, setShowProfileDropdown] = useState(false);
 
   const notifications = [
     { id: 1, text: "New assessment invitation: Frontend Skill Test", time: "10 min ago" },
@@ -46,18 +48,20 @@ export default function IntervieweeHeader() {
         )}
       </div>
 
-      <div className="relative group">
-        <button className="profile-btn">
-          <User className="w-6 h-6" />
-          <ChevronDown className="w-4 h-4" />
+      <div className="profile-section">
+        <button className="profile-btn" onClick={() => setShowProfileDropdown(!showProfileDropdown)}>
+          <span className="profile-text">User Name</span>
+          <User className="profile-icon w-6 h-6" />
+          <ChevronDown className="profile-chevron-icon w-4 h-4" />
         </button>
 
-        <div className="glass-dropdown profile-dropdown">
-          <a href="/interviewee/profile" className="dropdown-link">
-            Profile
-          </a>
-          <button className="dropdown-link">Account Settings</button>
-        </div>
+        {showProfileDropdown && createPortal(
+          <div className="glass-dropdown-global profile-dropdown-portal">
+            <p className="profile-card-title">Profile</p>
+            <button className="dropdown-link account-settings-button">Account Settings</button>
+          </div>,
+          document.body
+        )}
       </div>
     </header>
   );
