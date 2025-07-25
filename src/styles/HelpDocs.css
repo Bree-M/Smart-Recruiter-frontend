@@ -1,0 +1,114 @@
+.help-docs-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  min-height: 100vh;
+  background: radial-gradient(circle at center, #1a1a1a 0%, #0a0a0a 100%);
+  background-size: 200% 200%;
+  transition: background 0.5s ease-in-out;
+}
+
+.help-docs-card {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  padding: 2.5rem 2rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(40px) brightness(1.2) saturate(1.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.06) 100%);
+  box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  color: #f0f0f0;
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 2;
+}
+
+.help-docs-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0.9;
+  pointer-events: none;
+  border-radius: 2rem;
+  z-index: 1;
+}
+
+.help-docs-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px 0 rgba(0, 0, 0, 0.75);
+}
+
+.help-docs-card h2 {
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 800;
+  color: #FFD700;
+  text-align: center;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.7);
+  letter-spacing: 0.06em;
+}
+
+.help-docs-card p,
+.help-docs-card li,
+.help-docs-card a {
+  color: #dcdcdc;
+  line-height: 1.85;
+}
+
+.help-docs-card ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-top: 1.5rem;
+}
+
+.help-docs-card a {
+  color: #FFD700;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease-in-out, text-shadow 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.help-docs-card a::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: #FFE033;
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+.help-docs-card a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.help-docs-card a:hover {
+  color: #FFE033;
+  text-shadow: 0 0 10px rgba(255, 224, 51, 0.6);
+}
+
+.help-docs-contact-note {
+  margin-top: 2.5rem;
+  font-size: 1.05rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.help-docs-card .help-docs-list-description {
+  margin-left: 0.5rem;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+}
