@@ -1,17 +1,23 @@
-import { Outlet } from "react-router-dom";
+import React from "react";
 import RecruiterSidebar from "../components/RecruiterSidebar";
-import RecruiterHeader from "../components/RecruiterHeader";
+import { Outlet } from "react-router-dom";
 
-export default function RecruiterLayout() {
+const RecruiterLayout = () => {
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <div style={{ display: "flex", minHeight: "100vh" }}>
       <RecruiterSidebar />
-      <div className="flex-1 flex flex-col">
-        <RecruiterHeader />
-        <main className="flex-1 overflow-y-auto p-6">
-          <Outlet />
-        </main>
-      </div>
+
+      <main style={{
+        flexGrow: 1,
+        backgroundColor: "#0e0e0e",
+        padding: "2rem",
+        color: "#fff",
+        overflowY: "auto",
+      }}>
+        <Outlet />
+      </main>
     </div>
   );
-}
+};
+
+export default RecruiterLayout;
