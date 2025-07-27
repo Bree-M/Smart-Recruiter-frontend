@@ -29,10 +29,8 @@ const LoginPage = () => {
     <div className="glass-page center-content">
       <div className="glass-card auth-card">
         <div className="glass-blur" />
-
         <h2 className="glass-title">Welcome Back 👋</h2>
         <p className="glass-subtitle">Log in to access your dashboard</p>
-
         <form onSubmit={handleSubmit} className="glass-form">
           <input
             type="email"
@@ -54,7 +52,6 @@ const LoginPage = () => {
             Login
           </button>
         </form>
-
         <div className="glass-footer">
           <Link to="/forgot-password" className="glass-link">
             Forgot Password?

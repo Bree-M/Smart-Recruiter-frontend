@@ -1,22 +1,27 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
+// Auth Pages
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
 import RoleSelector from "./pages/Auth/RoleSelector";
 
+// Recruiter Pages (from main)
 import RecruiterDashboard from "./pages/recruiter/RecruiterDashboard";
 import CreateAssessment from "./pages/recruiter/CreateAssessment";
 import ReviewAssessment from "./pages/recruiter/ReviewAssessment";
 import ViewResponses from "./pages/recruiter/ViewResponses";
 import HelpDocs from "./pages/recruiter/HelpDocs";
 
+// Interviewee Pages (from your branch)
 import IntervieweeDashboard from "./pages/interviewee/IntervieweeDashboard";
 import MyAssessmentsPage from "./pages/interviewee/MyAssessmentsPage";
 
+// Layouts & Components
 import RecruiterLayout from "./layouts/RecruiterLayout";
 import IntervieweeLayout from "./layouts/IntervieweeLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
 
+// Global Styles
 import "./index.css";
 import "./styles/glass-ui.css";
 
@@ -25,7 +30,6 @@ const App = () => (
     <div id="main-app-container" className="h-screen overflow-hidden">
       <Routes>
         <Route path="/" element={<Navigate to="/select-role" />} />
-
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/select-role" element={<RoleSelector />} />
