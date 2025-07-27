@@ -1,3 +1,2 @@
-
-#Smart-Recruiter-frontend
->>>>>>> afb4e17 (Readme file)
+## Smart-Recruiter-frontend
+>>>>>>> b9a796b (updates)
