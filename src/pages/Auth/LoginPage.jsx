@@ -1,4 +1,3 @@
-// src/pages/Auth/LoginPage.jsx
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../../styles/glass-ui.css";
@@ -14,11 +13,15 @@ const LoginPage = () => {
     e.preventDefault();
 
     if (form.email === "req@gmail.com" && form.password === "12345") {
-      localStorage.setItem("token", "fake-jwt-token");
+      localStorage.setItem("token", "fake-jwt-token-recruiter");
       localStorage.setItem("role", "recruiter");
       navigate("/recruiter");
+    } else if (form.email === "cand@gmail.com" && form.password === "pass123") {
+      localStorage.setItem("token", "fake-jwt-token-candidate");
+      localStorage.setItem("role", "candidate");
+      navigate("/interviewee");
     } else {
-      alert("Invalid credentials – use req@gmail.com / 12345");
+      alert("Invalid credentials. Try req@gmail.com / 12345 (recruiter) or cand@gmail.com / pass123 (candidate)");
     }
   };
 
@@ -57,7 +60,7 @@ const LoginPage = () => {
             Forgot Password?
           </Link>
           <p>
-            Don’t have an account? <Link to="/register">Sign up</Link>
+            Don’t have an account? <Link to="/select-role" className="glass-link">Sign up</Link>
           </p>
         </div>
       </div>
