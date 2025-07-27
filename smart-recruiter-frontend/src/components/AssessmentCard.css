@@ -1,0 +1,110 @@
+.assessment-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  color: #f0f0f0;
+}
+
+.assessment-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 191, 255, 0.3);
+}
+
+.card-glass-blur {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 70% 30%, rgba(0, 191, 255, 0.08) 0%, transparent 50%);
+  filter: blur(50px);
+  z-index: -1;
+  pointer-events: none;
+  animation: rotateGlow 20s linear infinite alternate;
+}
+
+.assessment-info-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #FFD700;
+  margin-bottom: 1.2rem;
+  text-align: left;
+}
+
+.assessment-details p {
+  font-size: 0.95rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.assessment-details p:last-child {
+  margin-bottom: 1rem;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #FFF;
+  margin-right: 0.5rem;
+}
+
+.begin-challenge-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #00BFB3;
+  border: 1px solid #00A69D;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.begin-challenge-button:hover {
+  background: #008D80;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3), 0 0 15px rgba(0, 191, 255, 0.5);
+  border-color: #00BFB3;
+}
+
+.begin-challenge-button:active {
+  transform: translateY(0);
+}
+
+.begin-challenge-button .arrow {
+  margin-left: 0.8rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .assessment-card {
+    padding: 1.2rem;
+  }
+  .assessment-info-title {
+    font-size: 1.2rem;
+  }
+  .assessment-details p {
+    font-size: 0.9rem;
+  }
+  .begin-challenge-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.95rem;
+  }
+}

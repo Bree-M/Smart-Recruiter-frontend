@@ -1,0 +1,206 @@
+/* --- Recruiter Sidebar Container --- */
+.recruiter-sidebar {
+  width: 18rem; /* Consistent width */
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05); /* Lighter, more subtle glass background */
+  backdrop-filter: blur(25px) brightness(1.1); /* Deeper blur, slight brightness */
+  -webkit-backdrop-filter: blur(25px) brightness(1.1); /* For Safari */
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* Finer border for definition */
+  border-radius: 1.5rem 0 0 1.5rem; /* Softer top-left, bottom-left corners */
+  padding: 2.5rem 1.2rem 1.5rem 1.2rem; /* More balanced padding */
+  box-shadow: 6px 0 30px rgba(0, 0, 0, 0.3); /* Stronger shadow on the right for depth */
+  color: #f0f0f0; /* Default text color for the sidebar */
+  position: relative; /* For potential internal absolute positioning */
+  overflow: hidden; /* Important for glass-blur pseudo-element if added */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  transition: width 0.3s ease-in-out; /* Smooth transition if width changes (e.g., collapse) */
+}
+
+/* Optional: Add an internal subtle glow for the sidebar */
+.recruiter-sidebar::before {
+  content: "";
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.08) 0%, transparent 50%);
+  filter: blur(60px);
+  animation: rotateGlow 25s linear infinite reverse; /* Subtle reverse rotation */
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Reusing the general rotateGlow from glass-ui or defining here if not global */
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Sidebar Brand/Logo Section --- */
+.sidebar-brand {
+  padding: 1rem 1.2rem 2rem; /* More padding at the bottom to separate from nav */
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem); /* Responsive font size for brand */
+  font-weight: 800; /* Extra bold */
+  text-align: center;
+  color: #FFD700; /* Gold color for brand */
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); /* Stronger glow */
+  margin-bottom: 1.5rem; /* More space below brand */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08); /* Subtle separator */
+}
+
+/* --- Navigation Section --- */
+.sidebar-nav {
+  flex-grow: 1; /* Takes up available space */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem; /* Increased gap between links */
+  padding-top: 1rem; /* Space from brand separator */
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* More space between icon and text */
+  padding: 0.9rem 1.2rem; /* More generous padding for larger click area */
+  color: rgba(255, 255, 255, 0.75); /* Softer white for normal links */
+  border-radius: 1rem; /* Softer rounded corners */
+  text-decoration: none;
+  transition: all 0.3s ease-in-out; /* Smoother transitions */
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.sidebar-link:hover {
+  background: rgba(255, 215, 0, 0.08); /* Subtle gold tint on hover */
+  color: #FFD700; /* Gold text on hover */
+  transform: translateX(5px); /* Gentle slide effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Subtle shadow on hover */
+}
+
+.sidebar-link.active {
+  background: linear-gradient(90deg, #FFD700 0%, #f7c600 100%); /* Solid gold gradient */
+  color: #1a1a1a; /* Dark text for active state for contrast */
+  font-weight: 700; /* Bolder for active */
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.6); /* Stronger gold glow */
+  transform: translateX(0); /* Ensure no slide effect on active */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Subtle white border for active */
+}
+
+.sidebar-link svg {
+  font-size: 1.2rem; /* Consistent icon size */
+  transition: color 0.3s ease-in-out;
+}
+
+.sidebar-link.active svg {
+  color: #1a1a1a; /* Dark icon for active state */
+}
+
+/* --- Utility Links Section --- */
+.sidebar-utility {
+  margin-top: 2.5rem; /* More space above utility section */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0 0.5rem; /* Maintain padding */
+}
+
+/* Utility links can share styles with sidebar-link or have minor variations */
+.sidebar-utility .sidebar-link {
+    font-size: 0.95rem; /* Slightly smaller for utility links */
+    padding: 0.7rem 1.2rem;
+}
+
+
+/* --- Logout Section --- */
+.sidebar-logout {
+  margin-top: auto; /* Pushes logout to the bottom */
+  padding: 2rem 1rem 1rem; /* More vertical padding */
+  border-top: 1px solid rgba(255, 255, 255, 0.1); /* Consistent separator */
+}
+
+.sidebar-logout button {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center logout button content */
+  gap: 0.8rem; /* More space between icon and text */
+  color: rgba(255, 255, 255, 0.6); /* Softer white for logout */
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Full width button */
+  padding: 0.8rem 1rem;
+  border-radius: 1rem; /* Rounded corners */
+  transition: all 0.3s ease-in-out;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.sidebar-logout button:hover {
+  color: #ff6b6b; /* Brighter red on hover */
+  background-color: rgba(255, 77, 79, 0.1); /* Subtle red background on hover */
+  transform: translateY(-3px); /* Gentle lift effect */
+  box-shadow: 0 4px 15px rgba(255, 77, 79, 0.2); /* Red glow on hover */
+}
+
+.sidebar-logout button:active {
+  transform: translateY(0); /* Press effect */
+}
+
+.sidebar-logout button svg {
+  font-size: 1.3rem; /* Larger icon for logout */
+}
+
+/* --- Media Queries for Responsiveness --- */
+@media (max-width: 1024px) {
+  .recruiter-sidebar {
+    width: 16rem; /* Slightly narrower on smaller desktops/laptops */
+    padding: 2rem 1rem 1rem 1rem;
+  }
+  .sidebar-link {
+    padding: 0.8rem 1rem;
+    font-size: 0.95rem;
+  }
+  .sidebar-link svg {
+    font-size: 1.1rem;
+  }
+  .sidebar-utility .sidebar-link {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+  .sidebar-logout button {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+  .sidebar-logout button svg {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* For tablet/mobile, sidebar often becomes a top/bottom bar or hidden behind a toggle */
+  .recruiter-sidebar {
+    position: fixed; /* Fixed position for overlay or slide-in */
+    left: -18rem; /* Start off-screen */
+    top: 0;
+    bottom: 0;
+    width: 18rem; /* Full height */
+    z-index: 1000; /* Ensure it's above other content */
+    border-radius: 0 1.5rem 1.5rem 0; /* Rounded on the right for slide-in */
+    transition: left 0.3s ease-in-out; /* Animation for sliding in */
+  }
+
+  /* Example of how to show it (e.g., when a menu toggle is clicked) */
+  .recruiter-sidebar.open {
+    left: 0;
+  }
+
+  .sidebar-brand {
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+  }
+}
+
+/* Consider a dedicated overlay or "close" button for mobile sidebar */

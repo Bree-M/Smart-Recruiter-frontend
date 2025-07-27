@@ -1,0 +1,77 @@
+/* --- Role Card Styling --- */
+.role-card {
+  width: 16rem;
+  height: 16rem;
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+  /* Enhanced Glassmorphism */
+  background: rgba(255, 255, 255, 0.08); /* More subtle background for deeper glass */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Finer, less distracting border */
+  backdrop-filter: blur(20px) brightness(1.1); /* Deeper blur and slight brightness */
+  -webkit-backdrop-filter: blur(20px) brightness(1.1); /* For Safari compatibility */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45); /* Stronger, more pronounced shadow */
+  
+  cursor: pointer;
+  color: #f0f0f0; /* Default text color, consistent with overall theme */
+  transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+  position: relative; /* For potential internal elements or pseudo-effects */
+  overflow: hidden; /* To contain any internal glows */
+}
+
+.role-card:hover {
+  transform: translateY(-8px); /* Lift effect on hover */
+  box-shadow: 0 16px 48px 0 rgba(0, 0, 0, 0.55), 
+              0 0 20px rgba(255, 215, 0, 0.5); /* Stronger shadow + gold glow on hover */
+  border-color: #FFD700; /* Gold border on hover */
+  background: rgba(255, 255, 255, 0.12); /* Slightly more opaque background on hover */
+}
+
+.role-card.selected {
+  /* Active/Selected state for the role card */
+  background: linear-gradient(135deg, #FFD700 0%, #f7c600 100%); /* Solid gold gradient */
+  color: #1a1a1a; /* Dark text for high contrast */
+  font-weight: bold;
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.6); /* Stronger gold glow */
+  border: 1px solid #FFD700; /* Solid gold border */
+  transform: translateY(-4px); /* Slight lift even when selected */
+}
+
+/* Optional: Add styles for content inside the role card if needed */
+.role-card .icon {
+  font-size: 3rem; /* Example icon size */
+  margin-bottom: 1rem;
+  color: #FFD700; /* Gold icon color */
+  transition: color 0.3s ease-in-out;
+}
+
+.role-card.selected .icon {
+  color: #1a1a1a; /* Dark icon when selected */
+}
+
+.role-card h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  transition: color 0.3s ease-in-out;
+}
+
+.role-card.selected h3 {
+  color: #1a1a1a;
+}
+
+.role-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.8); /* Softer white for description */
+  transition: color 0.3s ease-in-out;
+}
+
+.role-card.selected p {
+  color: rgba(26, 26, 26, 0.8); /* Darker text for description when selected */
+}
