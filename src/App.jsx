@@ -9,8 +9,10 @@ import ViewResponses from "./pages/recruiter/ViewResponses";
 import SendInvitations from "./pages/recruiter/SendInvitations";
 import HelpDocs from "./pages/recruiter/HelpDocs";
 import Analytics from "./pages/recruiter/Analytics";
+import SettingsPage from "./pages/recruiter/SettingsPage"; // ✅ Make sure this file exists and is error-free
 import RecruiterLayout from "./layouts/RecruiterLayout";
 import ProtectedRoute from "./components/ProtectedRoute";
+
 import "./index.css";
 import "./styles/glass-ui.css";
 
@@ -21,6 +23,8 @@ const App = () => (
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/select-role" element={<RoleSelector />} />
+      
+      {/* Protected Recruiter Routes */}
       <Route element={<ProtectedRoute allowedRoles={["recruiter"]} />}>
         <Route path="/recruiter" element={<RecruiterLayout />}>
           <Route index element={<RecruiterDashboard />} />
@@ -29,11 +33,13 @@ const App = () => (
           <Route path="invitations" element={<SendInvitations />} />
           <Route path="responses" element={<ViewResponses />} />
           <Route path="analytics" element={<Analytics />} />
-          <Route path="settings" element={<div>Settings Page Placeholder</div>} />
+          <Route path="settings" element={<SettingsPage />} /> {/* ✅ Settings Page */}
           <Route path="help" element={<HelpDocs />} />
           <Route path="jobs" element={<div>Jobs Page Placeholder</div>} />
         </Route>
       </Route>
+
+      {/* Catch-All Route */}
       <Route path="*" element={<Navigate to="/login" />} />
     </Routes>
   </Router>
