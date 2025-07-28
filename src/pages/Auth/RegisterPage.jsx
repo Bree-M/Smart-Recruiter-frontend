@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import "../../styles/glass-ui.css";
-import "../../styles/RegisterPage.css";
+import { Link, useLocation } from "react-router-dom";
+import "../../styles/glass-ui.css"; 
+import "../../styles/RegisterPage.css"; 
+
 
 const RegisterPage = () => {
   const location = useLocation();
@@ -28,7 +29,7 @@ const RegisterPage = () => {
     if (submitAttempted) {
       validateForm();
     }
-  }, [form, submitAttempted]);
+  }, [form, submitAttempted]); 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

@@ -1,8 +1,7 @@
-// src/components/RecruiterHeader.jsx
 import { NavLink } from "react-router-dom";
 import { Bell, User, Search, ChevronDown } from "lucide-react";
 import { useState } from "react";
-import "./RecruiterHeader.css"; // 💎 Import the custom CSS
+import "./RecruiterHeader.css";
 
 export default function RecruiterHeader() {
   const [showNotifications, setShowNotifications] = useState(false);
@@ -16,7 +15,6 @@ export default function RecruiterHeader() {
     <header className="recruiter-header">
       <h2 className="recruiter-title">Recruiter Dashboard</h2>
 
-      {/* Search bar */}
       <div className="glass-search">
         <Search className="search-icon" />
         <input
@@ -26,7 +24,6 @@ export default function RecruiterHeader() {
         />
       </div>
 
-      {/* Notification bell + dropdown */}
       <div className="relative">
         <button
           className="bell-btn"
@@ -50,7 +47,6 @@ export default function RecruiterHeader() {
         )}
       </div>
 
-      {/* Profile avatar + dropdown */}
       <div className="relative group">
         <button className="profile-btn">
           <User className="w-6 h-6" />

@@ -1,5 +1,3 @@
-// src/pages/recruiter/HelpDocs.jsx
-
 import React from "react";
 import "../../styles/HelpDocs.css";
 
@@ -10,7 +8,7 @@ const HelpDocs = () => {
         <h2>Need Assistance?</h2>
         <p>
           Our dedicated support team is here to assist you with any questions or issues related to the Smart Recruiter platform.
-          Whether you need help with account setup, feature navigation, or troubleshooting, we’re just a message away!
+          Whether you need help with account setup, feature navigation, or troubleshooting, we're just a message away!
         </p>
 
         <ul>
@@ -19,7 +17,6 @@ const HelpDocs = () => {
             <a href="mailto:support@smartrecruiter.com">
               support@smartrecruiter.com
             </a>
-            {/* Replaced inline style with a class */}
             <p className="help-docs-list-description">
               Expect a response within 24 hours during business days (Monday–Friday, 9 AM–5 PM EAT).
             </p>
@@ -33,7 +30,6 @@ const HelpDocs = () => {
             >
               Chat with us on WhatsApp
             </a>
-            {/* Replaced inline style with a class */}
             <p className="help-docs-list-description">
               Available from 8 AM to 8 PM EAT, Monday through Saturday.
             </p>
@@ -41,7 +37,6 @@ const HelpDocs = () => {
           <li>
             <strong>Phone Support:</strong>{" "}
             <a href="tel:+254796847341">+254 796 847341</a>
-            {/* Replaced inline style with a class */}
             <p className="help-docs-list-description">
               Call us during business hours (Monday–Friday, 9 AM–5 PM EAT).
             </p>

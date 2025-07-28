@@ -1,13 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-// ✅ Correct relative path to component-specific CSS
 import '../../styles/CreateAssessment.css';
-
-// ✅ Import the global/shared glassmorphism styles
 import '../../styles/glass-ui.css';
-
 
 const CreateAssessment = () => {
   const [assessment, setAssessment] = useState({
@@ -35,7 +30,6 @@ const CreateAssessment = () => {
       if (q.type === 'MCQ' && q.options.some(opt => !opt.trim())) {
         newErrors[`options_${idx}`] = `All options for Question ${idx + 1} must be filled`;
       }
-      // For MCQ, answer must be one of the options or filled
       if (q.type === 'MCQ' && q.answer.trim() && !q.options.includes(q.answer.trim())) {
         newErrors[`answer_${idx}`] = `Answer for Question ${idx + 1} must match one of the options.`;
       } else if (!q.answer.trim()) {
@@ -134,15 +128,11 @@ const CreateAssessment = () => {
   }, [assessment, validateForm]);
 
   return (
-    // Use the global glass-page for alignment and background if desired, or just create-assessment-container
     <div className="glass-page">
-      {/* Apply glass-card and component-specific container styles */}
       <div className="glass-card create-assessment-container">
-        {/* Use glass-title for the main heading */}
         <h2 className="glass-title">Create New Assessment</h2>
 
         <form onSubmit={handleSubmit} className="glass-form create-assessment-form">
-          {/* Assessment Title */}
           <div>
             <label>Title:</label>
             <input
@@ -152,11 +142,11 @@ const CreateAssessment = () => {
               placeholder="e.g., Frontend Developer Test"
               required
               className={errors.title ? 'invalid' : ''}
+              aria-invalid={errors.title ? "true" : "false"}
             />
             {errors.title && <p className="error-message">{errors.title}</p>}
           </div>
 
-          {/* Assessment Description */}
           <div>
             <label>Description:</label>
             <textarea
@@ -167,7 +157,6 @@ const CreateAssessment = () => {
             />
           </div>
 
-          {/* Questions Section */}
           <div className="form-section-divider">
             <h2 className="section-title">Questions</h2>
             {errors.questions && <p className="error-message">{errors.questions}</p>}
@@ -188,19 +177,19 @@ const CreateAssessment = () => {
                   </button>
                 </div>
 
-                {/* Question Content */}
                 <input
                   type="text"
                   value={q.content}
                   onChange={(e) => updateQuestionContent(q.id, e.target.value)}
                   placeholder="Enter question content"
+                  required
                   className={errors[`question_${index}`] ? 'invalid' : ''}
+                  aria-invalid={errors[`question_${index}`] ? "true" : "false"}
                 />
                 {errors[`question_${index}`] && (
                   <p className="error-message">{errors[`question_${index}`]}</p>
                 )}
 
-                {/* MCQ Options */}
                 {q.type === 'MCQ' && (
                   <div className="mcq-options-container">
                     <label>Options:</label>
@@ -211,13 +200,16 @@ const CreateAssessment = () => {
                           value={opt}
                           onChange={(e) => updateOption(q.id, idx, e.target.value)}
                           placeholder={`Option ${idx + 1}`}
+                          required
                           className={errors[`options_${index}`] ? 'invalid' : ''}
+                          aria-invalid={errors[`options_${index}`] ? "true" : "false"}
                         />
                         {q.options.length > 2 && (
                           <button
                             type="button"
                             onClick={() => removeOption(q.id, idx)}
                             className="remove-option-button"
+                            title="Remove Option"
                           >
                             X
                           </button>
@@ -242,7 +234,9 @@ const CreateAssessment = () => {
                         value={q.answer}
                         onChange={(e) => updateAnswer(q.id, e.target.value)}
                         placeholder="Enter correct option text"
+                        required
                         className={errors[`answer_${index}`] ? 'invalid' : ''}
+                        aria-invalid={errors[`answer_${index}`] ? "true" : "false"}
                       />
                       {errors[`answer_${index}`] && (
                         <p className="error-message">{errors[`answer_${index}`]}</p>
@@ -251,7 +245,6 @@ const CreateAssessment = () => {
                   </div>
                 )}
 
-                {/* Subjective / Coding */}
                 {(q.type === 'Subjective' || q.type === 'Coding') && (
                   <div style={{ marginTop: '1rem' }}>
                     <label>Expected Answer:</label>
@@ -260,7 +253,9 @@ const CreateAssessment = () => {
                       onChange={(e) => updateAnswer(q.id, e.target.value)}
                       rows="3"
                       placeholder="Describe the expected answer..."
+                      required
                       className={errors[`answer_${index}`] ? 'invalid' : ''}
+                      aria-invalid={errors[`answer_${index}`] ? "true" : "false"}
                     />
                     {errors[`answer_${index}`] && (
                       <p className="error-message">{errors[`answer_${index}`]}</p>
@@ -271,7 +266,6 @@ const CreateAssessment = () => {
             ))}
           </div>
 
-          {/* Add Question Buttons */}
           <div className="form-section-divider">
             <label>Add Question:</label>
             <div className="add-question-buttons">
@@ -299,7 +293,6 @@ const CreateAssessment = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
           <button type="submit" className="glass-button primary submit-button">
             Create Assessment
           </button>

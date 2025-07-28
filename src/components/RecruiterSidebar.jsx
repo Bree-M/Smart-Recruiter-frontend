@@ -1,4 +1,3 @@
-// src/components/RecruiterSidebar.jsx
 import { NavLink, useNavigate } from "react-router-dom";
 import {
   Home,
@@ -11,7 +10,7 @@ import {
   Briefcase,
   Users,
 } from "lucide-react";
-import "./RecruiterSidebar.css"; // 💎 Import the liquid-glass style
+import "./RecruiterSidebar.css";
 
 const nav = [
   { path: "/recruiter", icon: Home, label: "Dashboard" },
@@ -33,7 +32,7 @@ export default function RecruiterSidebar() {
   return (
     <aside className="recruiter-sidebar">
       <div className="sidebar-brand">
-        <h1>Smart Recruiter 👋</h1>
+        <h1>Smart Recruiter 💻🖥️</h1>
       </div>
 
       <nav className="sidebar-nav">
