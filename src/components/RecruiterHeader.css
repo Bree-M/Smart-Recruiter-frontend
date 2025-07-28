@@ -1,118 +1,110 @@
-/* --- Recruiter Header Container --- */
 .recruiter-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2.5rem; /* More generous horizontal padding */
-  backdrop-filter: blur(20px) brightness(1.1); /* Stronger blur, subtle brightness */
-  -webkit-backdrop-filter: blur(20px) brightness(1.1); /* For Safari */
-  background: rgba(255, 255, 255, 0.08); /* More subtle background transparency */
-  border-radius: 1.5rem; /* Softer rounded corners */
-  border: 1px solid rgba(255, 255, 255, 0.15); /* Defined border */
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Deeper, more refined shadow */
+  padding: 1rem 2.5rem;
+  backdrop-filter: blur(20px) brightness(1.1);
+  -webkit-backdrop-filter: blur(20px) brightness(1.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
   position: sticky;
-  top: 1rem; /* Slightly offset from the top for a floating effect */
-  left: 1rem; /* Add left/right for padding from screen edges */
+  top: 1rem;
+  left: 1rem;
   right: 1rem;
-  margin: 1rem; /* Margin around the sticky header */
-  z-index: 1000; /* High z-index to ensure it's always on top */
+  margin: 1rem;
+  z-index: 1000;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  transition: all 0.3s ease-in-out; /* Smooth transitions for any changes */
-}
-
-/* --- Title --- */
-.recruiter-title {
-  font-size: clamp(1.2rem, 3vw, 1.8rem); /* Responsive font size */
-  font-weight: 700; /* Bolder */
-  color: #FFD700; /* Gold color */
-  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3); /* Subtle glow */
-  letter-spacing: -0.02em; /* Tighter spacing */
-}
-
-/* --- Search Bar (Integrated new input design) --- */
-.glass-search {
-  /* This now acts as the .InputContainer from the Uiverse snippet */
-  width: 280px; /* Slightly wider search bar */
-  height: 48px; /* Adjusted height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* Using a subtle gradient for background, matching the glass theme */
-  background: rgba(255, 255, 255, 0.1); /* Lighter glass background */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Subtle border */
-  border-radius: 30px;
-  overflow: hidden;
-  cursor: text; /* Indicate it's for typing */
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.15); /* Subtle inner and outer shadow */
   transition: all 0.3s ease-in-out;
 }
 
-.glass-search:focus-within { /* When input inside is focused */
-  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.4); /* Gold glow on focus */
+.recruiter-title {
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+  letter-spacing: -0.02em;
+}
+
+.glass-search {
+  width: 280px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: text;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1), 0 2px 5px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-search:focus-within {
+  box-shadow: inset 0 0 5px rgba(255, 215, 0, 0.2), 0 0 15px rgba(255, 215, 0, 0.4);
   border-color: #FFD700;
 }
 
 .search-icon {
-  margin-left: 1rem; /* Icon inside padding */
+  margin-left: 1rem;
   margin-right: 0.5rem;
-  color: rgba(255, 255, 255, 0.7); /* Softer white */
-  font-size: 1.1rem; /* Slightly larger icon */
-  flex-shrink: 0; /* Prevent icon from shrinking */
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.1rem;
+  flex-shrink: 0;
 }
 
 .search-input {
-  /* This applies the .input styles from Uiverse snippet */
-  width: calc(100% - 3.5rem); /* Adjust width to account for icon and padding */
-  height: 40px; /* Adjusted height */
+  width: calc(100% - 3.5rem);
+  height: 40px;
   border: none;
   outline: none;
-  caret-color: #FFD700; /* Gold caret color */
-  background-color: transparent; /* Keep input background transparent to show container */
-  border-radius: 30px; /* Inherit from container, but good to have */
-  padding-left: 0.5rem; /* Adjust padding for text */
-  padding-right: 15px; /* Add right padding */
+  caret-color: #FFD700;
+  background-color: transparent;
+  border-radius: 30px;
+  padding-left: 0.5rem;
+  padding-right: 15px;
   letter-spacing: 0.8px;
-  color: #fff; /* White text for input */
-  font-size: 0.95rem; /* Consistent font size */
+  color: #fff;
+  font-size: 0.95rem;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  transition: background-color 0.25s ease; /* Smooth transition for background if it changes */
+  transition: background-color 0.25s ease;
 }
 
 .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.5); /* Lighter placeholder */
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .search-input:focus {
-  background-color: rgba(255, 255, 255, 0.05); /* Subtle light background on focus */
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-
-/* --- Notification Bell --- */
 .bell-btn {
   position: relative;
-  background: rgba(255, 255, 255, 0.08); /* Subtle glass background */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
-  border-radius: 50%; /* Circular button */
-  color: #FFD700; /* Gold bell icon */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: #FFD700;
   cursor: pointer;
-  width: 40px; /* Fixed size */
+  width: 40px;
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.2rem; /* Larger bell icon */
+  font-size: 1.2rem;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .bell-btn:hover {
-  background: rgba(255, 215, 0, 0.15); /* Gold tint on hover */
-  transform: scale(1.05); /* Gentle scale */
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3); /* Gold glow on hover */
+  background: rgba(255, 215, 0, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .bell-btn:active {
-  transform: scale(0.98); /* Slight press effect */
+  transform: scale(0.98);
 }
 
 .bell-btn:focus-visible {
@@ -122,14 +114,14 @@
 
 .notification-dot {
   position: absolute;
-  top: 4px; /* Adjusted position */
-  right: 4px; /* Adjusted position */
-  background: #ff4d4f; /* Bright red */
-  border: 1px solid rgba(255, 255, 255, 0.5); /* White border for pop */
+  top: 4px;
+  right: 4px;
+  background: #ff4d4f;
+  border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
-  width: 10px; /* Slightly larger dot */
+  width: 10px;
   height: 10px;
-  animation: pulse 1.5s infinite ease-in-out; /* Pulsing animation */
+  animation: pulse 1.5s infinite ease-in-out;
 }
 
 @keyframes pulse {
@@ -138,28 +130,27 @@
   100% { transform: scale(0.8); opacity: 0.8; }
 }
 
-/* --- Dropdowns (Glass style) --- */
 .glass-dropdown {
   position: absolute;
-  top: calc(100% + 0.8rem); /* Slightly more space below header */
+  top: calc(100% + 0.8rem);
   right: 0;
   background: rgba(255, 255, 255, 0.12);
-  border-radius: 1rem; /* Softer radius */
-  backdrop-filter: blur(18px) brightness(1.1); /* Stronger blur */
+  border-radius: 1rem;
+  backdrop-filter: blur(18px) brightness(1.1);
   -webkit-backdrop-filter: blur(18px) brightness(1.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow */
-  padding: 1rem 1.2rem; /* More generous padding */
-  min-width: 260px; /* Slightly wider */
-  animation: fadeInSlideDown 0.3s ease-out; /* Combined animation */
-  color: #f0f0f0; /* Default text color */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 1rem 1.2rem;
+  min-width: 260px;
+  animation: fadeInSlideDown 0.3s ease-out;
+  color: #f0f0f0;
   z-index: 1000;
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 @keyframes fadeInSlideDown {
   from {
     opacity: 0;
-    transform: translateY(-10px); /* Starts slightly above */
+    transform: translateY(-10px);
   }
   to {
     opacity: 1;
@@ -168,57 +159,56 @@
 }
 
 .dropdown-item {
-  margin-bottom: 0.8rem; /* More space between items */
+  margin-bottom: 0.8rem;
 }
 
 .dropdown-item:last-child {
-  margin-bottom: 0; /* No margin on last item */
+  margin-bottom: 0;
 }
 
 .dropdown-item p:first-child {
-  font-weight: 600; /* Bolder for titles/main text */
-  color: #fff; /* Pure white for main text */
-  margin-bottom: 0.2rem; /* Small space below title */
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.2rem;
 }
 
 .dropdown-link {
   display: block;
-  padding: 0.6rem 0.8rem; /* More padding for clickable area */
-  color: rgba(255, 255, 255, 0.8); /* Softer white for links */
+  padding: 0.6rem 0.8rem;
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  border-radius: 0.5rem; /* Rounded corners for hover */
+  border-radius: 0.5rem;
   transition: all 0.25s ease-in-out;
 }
 
 .dropdown-link:hover {
-  background-color: rgba(255, 215, 0, 0.1); /* Subtle gold background on hover */
-  color: #FFD700; /* Gold text on hover */
-  transform: translateX(3px); /* Slight slide effect */
+  background-color: rgba(255, 215, 0, 0.1);
+  color: #FFD700;
+  transform: translateX(3px);
 }
 
-/* --- Profile Button --- */
 .profile-btn {
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.08); /* Subtle glass background */
-  border: 1px solid rgba(255, 255, 255, 0.1); /* Light border */
-  border-radius: 2rem; /* Pill shape */
-  color: #FFD700; /* Gold icon/text */
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  color: #FFD700;
   cursor: pointer;
-  padding: 0.4rem 0.8rem; /* Adjusted padding for pill shape */
-  gap: 0.5rem; /* More space between elements */
+  padding: 0.4rem 0.8rem;
+  gap: 0.5rem;
   transition: all 0.3s ease-in-out;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .profile-btn:hover {
-  background: rgba(255, 215, 0, 0.15); /* Gold tint on hover */
-  transform: translateY(-2px); /* Subtle lift */
-  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3); /* Gold glow on hover */
+  background: rgba(255, 215, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 .profile-btn:active {
-  transform: translateY(0); /* Press effect */
+  transform: translateY(0);
 }
 
 .profile-btn:focus-visible {
@@ -227,35 +217,33 @@
 }
 
 .profile-avatar {
-  width: 32px; /* Fixed size for avatar */
+  width: 32px;
   height: 32px;
   border-radius: 50%;
-  background-color: #FFD700; /* Placeholder background */
+  background-color: #FFD700;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0d0d0d; /* Dark text for initials */
+  color: #0d0d0d;
   font-weight: bold;
   font-size: 0.9rem;
-  overflow: hidden; /* Ensure image fits if used */
-  border: 1px solid rgba(255, 255, 255, 0.3); /* White border for pop */
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .profile-name {
-  color: #fff; /* White text for name */
+  color: #fff;
   font-weight: 500;
   font-size: 0.95rem;
 }
 
-
-/* --- Media Queries for Responsiveness --- */
 @media (max-width: 1024px) {
   .recruiter-header {
     padding: 0.8rem 1.5rem;
     margin: 0.8rem;
   }
   .glass-search {
-    width: 220px; /* Smaller search bar */
+    width: 220px;
     height: 45px;
   }
   .search-input {
@@ -291,22 +279,22 @@
 
 @media (max-width: 768px) {
   .recruiter-header {
-    flex-wrap: wrap; /* Allow items to wrap */
-    justify-content: center; /* Center items when wrapped */
-    gap: 1rem; /* Space between wrapped items */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
     padding: 0.8rem 1rem;
     margin: 0.5rem;
     border-radius: 1rem;
   }
 
   .recruiter-title {
-    width: 100%; /* Title takes full width */
+    width: 100%;
     text-align: center;
     margin-bottom: 0.5rem;
   }
 
   .glass-search {
-    width: 90%; /* Search bar takes more width */
+    width: 90%;
     max-width: 300px;
   }
 
@@ -314,7 +302,7 @@
     padding: 0.4rem;
   }
   .profile-name {
-    display: none; /* Hide name to save space */
+    display: none;
   }
   .profile-btn {
     padding: 0.4rem;
@@ -331,7 +319,7 @@
     font-size: clamp(0.9rem, 5vw, 1.2rem);
   }
   .glass-search {
-    width: 100%; /* Full width search on very small screens */
+    width: 100%;
     height: 40px;
   }
   .search-input {

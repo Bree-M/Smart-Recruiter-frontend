@@ -12,14 +12,12 @@ const RecruiterDashboard = () => {
   ]);
 
   useEffect(() => {
-    // Initialize dark mode state based on html class
     setIsDarkMode(document.documentElement.classList.contains("dark"));
 
     const ctx = document.getElementById("activityChart");
     let chartInstance = null;
 
     if (ctx) {
-      // Set Chart.js defaults to match the theme
       Chart.defaults.color = isDarkMode ? "#c0c0c0" : "#6b7280";
       Chart.defaults.borderColor = isDarkMode ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)";
 
@@ -31,11 +29,11 @@ const RecruiterDashboard = () => {
             {
               label: "Candidate Activity",
               data: [65, 59, 80, 81, 56, 55, 40],
-              borderColor: "#FFD700", // Gold line
-              backgroundColor: isDarkMode ? "rgba(255, 215, 0, 0.15)" : "rgba(255, 215, 0, 0.3)", // Gold fill
+              borderColor: "#FFD700",
+              backgroundColor: isDarkMode ? "rgba(255, 215, 0, 0.15)" : "rgba(255, 215, 0, 0.3)",
               fill: true,
               tension: 0.4,
-              pointBackgroundColor: "#FFD700", // Gold points
+              pointBackgroundColor: "#FFD700",
               pointBorderColor: "#fff",
               pointHoverBackgroundColor: "#fff",
               pointHoverBorderColor: "#FFD700",
@@ -48,7 +46,7 @@ const RecruiterDashboard = () => {
           plugins: {
             legend: {
               labels: {
-                color: isDarkMode ? "#FFE033" : "#FFD700", // Legend label color
+                color: isDarkMode ? "#FFE033" : "#FFD700",
                 font: {
                   size: 14,
                 }
@@ -65,19 +63,19 @@ const RecruiterDashboard = () => {
           scales: {
             x: {
               ticks: {
-                color: isDarkMode ? "#a0a0a0" : "#4b5563", // X-axis label color
+                color: isDarkMode ? "#a0a0a0" : "#4b5563",
               },
               grid: {
-                color: isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)", // X-axis grid color
+                color: isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
               },
             },
             y: {
               beginAtZero: true,
               ticks: {
-                color: isDarkMode ? "#a0a0a0" : "#4b5563", // Y-axis label color
+                color: isDarkMode ? "#a0a0a0" : "#4b5563",
               },
               grid: {
-                color: isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)", // Y-axis grid color
+                color: isDarkMode ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
               },
             },
           },
@@ -90,14 +88,12 @@ const RecruiterDashboard = () => {
         chartInstance.destroy();
       }
     };
-  }, [isDarkMode]); // Re-create chart when dark mode state changes
+  }, [isDarkMode]);
 
   const toggleDarkMode = () => {
     const newDarkModeState = !isDarkMode;
     setIsDarkMode(newDarkModeState);
-    document.documentElement.classList.toggle("dark", newDarkModeState); // Add/remove 'dark' class on <html>
-    // Optional: Save preference to localStorage
-    // localStorage.setItem('theme', newDarkModeState ? 'dark' : 'light');
+    document.documentElement.classList.toggle("dark", newDarkModeState);
   };
 
   const handleQuickAction = (action) => {
@@ -105,10 +101,7 @@ const RecruiterDashboard = () => {
   };
 
   return (
-    // The 'dark' class will be added to html, affecting global styles.
-    // The main container doesn't need 'dark' class here anymore because we target html.dark in CSS.
     <div className="recruiter-dashboard-container">
-      {/* Header */}
       <div className="dashboard-header">
         <h1 className="dashboard-title">👋 Welcome back, Recruiter!</h1>
         <button
@@ -119,7 +112,6 @@ const RecruiterDashboard = () => {
         </button>
       </div>
 
-      {/* Stats */}
       <div className="dashboard-stats-grid">
         {stats.map(({ label, value }) => (
           <div
@@ -132,9 +124,7 @@ const RecruiterDashboard = () => {
         ))}
       </div>
 
-      {/* Main Section */}
       <div className="dashboard-main-grid">
-        {/* Chart */}
         <div className="dashboard-panel chart-panel">
           <h2>📊 Candidate Activity</h2>
           <div className="chart-canvas-container">
@@ -142,7 +132,6 @@ const RecruiterDashboard = () => {
           </div>
         </div>
 
-        {/* Tips */}
         <div className="dashboard-panel tips-panel">
           <h2>💡 Tips for Recruiters</h2>
           <ul>
@@ -155,9 +144,7 @@ const RecruiterDashboard = () => {
         </div>
       </div>
 
-      {/* Bottom Section */}
       <div className="dashboard-bottom-grid">
-        {/* Activity */}
         <div className="dashboard-panel activity-panel">
           <h2>🧾 Recent Activity</h2>
           <ul>
@@ -174,7 +161,6 @@ const RecruiterDashboard = () => {
           </ul>
         </div>
 
-        {/* Actions */}
         <div className="dashboard-panel actions-panel">
           <h2>📌 Quick Actions</h2>
           <div className="actions-panel-buttons">

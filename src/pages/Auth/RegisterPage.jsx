@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import "../../styles/glass-ui.css"; // Keep this for global glass styles
-import "../../styles/RegisterPage.css"; // <--- Add this new import!
+import "../../styles/glass-ui.css"; 
+import "../../styles/RegisterPage.css"; 
 
 
 const RegisterPage = () => {
@@ -28,7 +28,7 @@ const RegisterPage = () => {
     if (submitAttempted) {
       validateForm();
     }
-  }, [form, submitAttempted]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [form, submitAttempted]); 
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
