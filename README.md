@@ -1,7 +1,6 @@
 ## Smart-Recruiter-frontend
 
 =======
-## Smart-Recruiter-frontend 
 This is a react-based interface that gives the recruiters and the developers a smoother experiencing when both searching for a job and hiring. This app uses APIs from flask backend for better interaction for both users.
 
 ## Tech Stack
