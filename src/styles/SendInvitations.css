@@ -1,0 +1,189 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.send-invitations-container.glass-card {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #f0f0f0;
+}
+
+html.dark .send-invitations-container.glass-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  color: #dcdcdc;
+}
+
+.send-invitations-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+.send-invitations-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.send-invitations-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #dcdcdc;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+html.dark .send-invitations-form label {
+  color: #c0c0c0;
+}
+
+.send-invitations-form input[type="text"],
+.send-invitations-form textarea,
+.send-invitations-form select {
+  border-radius: 10px;
+  outline: none;
+  border: 0;
+  font-family: inherit;
+  background-color: #e2e2e2;
+  outline-offset: 3px;
+  padding: 10px 1rem;
+  transition: 0.25s;
+  width: 100%;
+  color: #333;
+  font-size: 1rem;
+}
+
+.send-invitations-form input[type="text"]::placeholder,
+.send-invitations-form textarea::placeholder {
+  color: #888;
+}
+
+.send-invitations-form input[type="text"]:focus,
+.send-invitations-form textarea:focus,
+.send-invitations-form select:focus {
+  outline-offset: 5px;
+  background-color: #fff;
+  outline: 2px solid #FFD700;
+}
+
+.send-invitations-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.send-invitations-form input.invalid,
+.send-invitations-form input[aria-invalid="true"],
+.send-invitations-form textarea.invalid,
+.send-invitations-form textarea[aria-invalid="true"],
+.send-invitations-form select.invalid,
+.send-invitations-form select[aria-invalid="true"] {
+  outline: 2px solid #dc3545;
+  outline-offset: 3px;
+  border: 0;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+  padding-left: 0.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.send-invitations-form .submit-button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  background: linear-gradient(135deg, rgba(79, 70, 229, 0.8), rgba(167, 139, 250, 0.8));
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.send-invitations-form .submit-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(167, 139, 250, 0.9), rgba(79, 70, 229, 0.9));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.5);
+}
+
+.send-invitations-form .submit-button:disabled {
+  background: rgba(150, 150, 150, 0.6);
+  cursor: not-allowed;
+  box-shadow: none;
+  opacity: 0.7;
+}
+
+.submit-button .spinner {
+  height: 1.25rem;
+  width: 1.25rem;
+  animation: spin 1s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .send-invitations-container.glass-card {
+    padding: 2rem 1.5rem;
+    margin: 1.5rem auto;
+  }
+  .send-invitations-title {
+    font-size: 1.5rem;
+  }
+}
+
+.Toastify__toast-container {
+  top: 1em;
+  right: 1em;
+}
+
+.Toastify__toast {
+  background: rgba(45, 45, 45, 0.9);
+  color: #f0f0f0;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.Toastify__toast--success {
+  border-left: 5px solid #22c55e;
+}
+
+.Toastify__toast--error {
+  border-left: 5px solid #dc3545;
+}
+
+.Toastify__progress-bar {
+  background: linear-gradient(to right, #FFD700, #a78bfa);
+}
