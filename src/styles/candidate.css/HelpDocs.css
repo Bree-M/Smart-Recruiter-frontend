@@ -1,0 +1,217 @@
+.help-docs-container {
+  padding: 2rem;
+  color: #f0f0f0;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 4rem);
+}
+
+.help-docs-card {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(35px) brightness(1.1) saturate(1.1);
+  -webkit-backdrop-filter: blur(35px) brightness(1.1) saturate(1.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.55);
+  padding: 2.5rem;
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+html.dark .help-docs-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow: 0 15px 50px 0 rgba(0, 0, 0, 0.7);
+}
+
+.help-docs-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 60px 0 rgba(0, 0, 0, 0.7);
+}
+
+.help-docs-card h2 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 800;
+  color: #FFD700;
+  text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+html.dark .help-docs-card h2 {
+  color: #FFE033;
+  text-shadow: 0 0 18px rgba(255, 224, 51, 0.4);
+}
+
+.help-docs-card p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+html.dark .help-docs-card p {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.help-docs-card ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: left;
+}
+
+.help-docs-card ul li {
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+  color: #dcdcdc;
+}
+
+html.dark .help-docs-card ul li {
+  color: #c0c0c0;
+}
+
+.help-docs-card ul li strong {
+  color: #FFD700;
+  font-weight: 600;
+}
+
+html.dark .help-docs-card ul li strong {
+  color: #FFE033;
+}
+
+.help-docs-card ul li a {
+  color: #86efac;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+html.dark .help-docs-card ul li a {
+  color: #a7f3d0;
+}
+
+.help-docs-card ul li a:hover {
+  color: #34d399;
+  text-shadow: 0 0 8px rgba(52, 211, 153, 0.5);
+}
+
+html.dark .help-docs-card ul li a:hover {
+  color: #6ee7b7;
+  text-shadow: 0 0 10px rgba(110, 231, 183, 0.6);
+}
+
+.help-docs-list-description {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.3rem;
+  line-height: 1.4;
+  text-align: left;
+}
+
+html.dark .help-docs-list-description {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.help-docs-contact-note {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+html.dark .help-docs-contact-note {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.help-docs-contact-note a {
+  color: #a78bfa;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+html.dark .help-docs-contact-note a {
+  color: #c4b5fd;
+}
+
+.help-docs-contact-note a:hover {
+  color: #8b5cf6;
+  text-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+html.dark .help-docs-contact-note a:hover {
+  color: #a78bfa;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.6);
+}
+
+@media (max-width: 768px) {
+  .help-docs-container {
+    padding: 1.5rem;
+    min-height: unset;
+  }
+
+  .help-docs-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .help-docs-card h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .help-docs-card p {
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .help-docs-card ul {
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .help-docs-card ul li {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .help-docs-list-description {
+    font-size: 0.8rem;
+  }
+
+  .help-docs-contact-note {
+    font-size: 0.9rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-docs-container {
+    padding: 1rem;
+  }
+
+  .help-docs-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .help-docs-card h2 {
+    font-size: 1.8rem;
+  }
+
+  .help-docs-card p {
+    font-size: 0.9rem;
+  }
+
+  .help-docs-card ul li {
+    font-size: 0.95rem;
+  }
+}

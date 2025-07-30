@@ -12,12 +12,18 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (form.email === "req@gmail.com" && form.password === "12345") {
+    const { email, password } = form;
+
+    if (email === "req@gmail.com" && password === "12345") {
       localStorage.setItem("token", "fake-jwt-token");
       localStorage.setItem("role", "recruiter");
       navigate("/recruiter");
+    } else if (email === "can@gmail.com" && password === "12345") {
+      localStorage.setItem("token", "fake-jwt-token");
+      localStorage.setItem("role", "candidate");
+      navigate("/candidate");
     } else {
-      alert("Invalid credentials – use req@gmail.com / 12345");
+      alert("Invalid credentials. Try:\n\nRecruiter: req@gmail.com\nCandidate: can@gmail.com\nPassword: 12345");
     }
   };
 
