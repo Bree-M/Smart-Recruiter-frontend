@@ -28,9 +28,6 @@ npm start
 
 ## Contributing
 
-<<<<<<< HEAD
+
 ## License
 
-=======
-## License
->>>>>>> 742489e71872a43bc50dbc4f7e2a17328c2d7202

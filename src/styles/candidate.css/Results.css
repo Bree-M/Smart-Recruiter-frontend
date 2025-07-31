@@ -36,6 +36,7 @@ html.dark .results-page h2 {
   text-align: center;
 }
 
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -154,6 +155,7 @@ html.dark .clear-btn:hover {
 }
 
 
+
 .result-list {
   list-style: none;
   padding: 0;
@@ -161,6 +163,7 @@ html.dark .clear-btn:hover {
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
+
 
 
 .result-card {
@@ -223,6 +226,7 @@ html.dark .result-card p {
 html.dark .result-card strong {
   color: #a7f3d0;
 }
+
 
 
 .details-btn {
@@ -327,12 +331,14 @@ html.dark .answer-list li p:first-child {
 
 .answer-list li strong {
 
+  color: #86efac;
   font-weight: 600;
 }
 
 html.dark .answer-list li strong {
   color: #a7f3d0;
 }
+
 
 
 @media (max-width: 768px) {
