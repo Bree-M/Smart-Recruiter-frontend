@@ -5,7 +5,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 4rem); /* Adjust based on your header/footer height if any */
+  min-height: calc(100vh - 4rem);
+
 }
 
 .help-docs-card {

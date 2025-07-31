@@ -36,7 +36,6 @@ html.dark .results-page h2 {
   text-align: center;
 }
 
-/* Filters section - consistent with CandidateAssessments */
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -154,7 +153,7 @@ html.dark .clear-btn:hover {
   box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
 }
 
-/* Result List Container */
+
 .result-list {
   list-style: none;
   padding: 0;
@@ -163,7 +162,7 @@ html.dark .clear-btn:hover {
   gap: 1.5rem;
 }
 
-/* Individual Result Card styling (Glassmorphism effect) */
+
 .result-card {
   position: relative;
   border-radius: 1.5rem;
@@ -225,7 +224,7 @@ html.dark .result-card strong {
   color: #a7f3d0;
 }
 
-/* Details button - consistent with CandidateAssessments */
+
 .details-btn {
   background: rgba(79, 70, 229, 0.15);
   color: #a78bfa;
@@ -258,7 +257,7 @@ html.dark .details-btn:hover {
   background: rgba(79, 70, 229, 0.2);
 }
 
-/* Expanded details section */
+
 .result-details {
   margin-top: 1rem;
   padding-top: 1rem;
@@ -286,7 +285,7 @@ html.dark .result-details {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Answer list within result card */
+
 .answer-list {
   list-style: none;
   padding: 0;
@@ -327,7 +326,7 @@ html.dark .answer-list li p:first-child {
 }
 
 .answer-list li strong {
-  color: #86efac; /* Green for actual answers */
+
   font-weight: 600;
 }
 
@@ -335,7 +334,7 @@ html.dark .answer-list li strong {
   color: #a7f3d0;
 }
 
-/* Responsive adjustments */
+
 @media (max-width: 768px) {
   .results-page {
     padding: 1.5rem;
