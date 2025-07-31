@@ -28,7 +28,14 @@ const RegisterPage = () => {
     if (submitAttempted) {
       validateForm();
     }
-  }, [form, submitAttempted]); 
+  }, [form, submitAttempted]);
+  
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/recruiters`)
+      .then((res) => res.json())
+      .then((data) => console.log("Backend says:", data))
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
