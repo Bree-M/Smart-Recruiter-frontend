@@ -6,7 +6,6 @@ import "../../styles/RegisterPage.css";
 
 const RegisterPage = () => {
   const location = useLocation();
-  const navigate = useNavigate();
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -69,18 +68,6 @@ const RegisterPage = () => {
 
     if (validateForm()) {
       console.log("Registering user:", form);
-      
-      if (form.role === "candidate") {
-        localStorage.setItem("token", "fake-jwt-token-candidate");
-        localStorage.setItem("role", "candidate");
-        navigate("/interviewee", { replace: true }); 
-      } else if (form.role === "recruiter") {
-        localStorage.setItem("token", "fake-jwt-token-recruiter");
-        localStorage.setItem("role", "recruiter");
-        navigate("/recruiter", { replace: true }); 
-      } else {
-        navigate("/login", { replace: true });
-      }
     } else {
       console.log("Form has errors, preventing submission.");
     }
@@ -105,6 +92,7 @@ const RegisterPage = () => {
             Registering as a <span className="highlight-role">{getRoleTitle(form.role)}</span>
           </p>
         )}
+
 
         <form onSubmit={handleSubmit} className="glass-form register-form">
           <div className="input-group">

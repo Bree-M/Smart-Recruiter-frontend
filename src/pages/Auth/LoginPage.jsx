@@ -12,16 +12,18 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (form.email === "req@gmail.com" && form.password === "12345") {
-      localStorage.setItem("token", "fake-jwt-token-recruiter");
+    const { email, password } = form;
+
+    if (email === "req@gmail.com" && password === "12345") {
+      localStorage.setItem("token", "fake-jwt-token");
       localStorage.setItem("role", "recruiter");
       navigate("/recruiter");
-    } else if (form.email === "cand@gmail.com" && form.password === "pass123") {
-      localStorage.setItem("token", "fake-jwt-token-candidate");
+    } else if (email === "can@gmail.com" && password === "12345") {
+      localStorage.setItem("token", "fake-jwt-token");
       localStorage.setItem("role", "candidate");
-      navigate("/interviewee");
+      navigate("/candidate");
     } else {
-      alert("Invalid credentials. Try req@gmail.com / 12345 (recruiter) or cand@gmail.com / pass123 (candidate)");
+      alert("Invalid credentials. Try:\n\nRecruiter: req@gmail.com\nCandidate: can@gmail.com\nPassword: 12345");
     }
   };
 
@@ -29,8 +31,10 @@ const LoginPage = () => {
     <div className="glass-page center-content">
       <div className="glass-card auth-card">
         <div className="glass-blur" />
+
         <h2 className="glass-title">Welcome Back 👋</h2>
         <p className="glass-subtitle">Log in to access your dashboard</p>
+
         <form onSubmit={handleSubmit} className="glass-form">
           <input
             type="email"
@@ -52,12 +56,13 @@ const LoginPage = () => {
             Login
           </button>
         </form>
+
         <div className="glass-footer">
           <Link to="/forgot-password" className="glass-link">
             Forgot Password?
           </Link>
           <p>
-            Don’t have an account? <Link to="/select-role" className="glass-link">Sign up</Link>
+            Don’t have an account? <Link to="/register">Sign up</Link>
           </p>
         </div>
       </div>
