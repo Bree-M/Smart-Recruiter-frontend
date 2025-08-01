@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import "../../styles/glass-ui.css"; 
 import "../../styles/RegisterPage.css"; 
 
-
 const RegisterPage = () => {
   const location = useLocation();
   const [form, setForm] = useState({
@@ -19,23 +18,27 @@ const RegisterPage = () => {
   const fullNameRef = useRef(null);
 
   useEffect(() => {
-    if (fullNameRef.current) {
-      fullNameRef.current.focus();
-    }
+    const url = `${import.meta.env.VITE_API_BASE_URL}/api/recruiters`;
+    console.log("Fetching recruiters from:", url);
+
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Backend says:", data);
+        if (data.message) setBackendMessage(data.message);
+      })
+      .catch((err) => console.error("Fetch error:", err));
+  }, []);
+  
+  
+
+  useEffect(() => {
+    if (fullNameRef.current) fullNameRef.current.focus();
   }, []);
 
   useEffect(() => {
-    if (submitAttempted) {
-      validateForm();
-    }
+    if (submitAttempted) validateForm();
   }, [form, submitAttempted]);
-  
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_BASE_URL}/api/recruiters`)
-      .then((res) => res.json())
-      .then((data) => console.log("Backend says:", data))
-      .catch((err) => console.error("Fetch error:", err));
-  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -99,7 +102,6 @@ const RegisterPage = () => {
             Registering as a <span className="highlight-role">{getRoleTitle(form.role)}</span>
           </p>
         )}
-
 
         <form onSubmit={handleSubmit} className="glass-form register-form">
           <div className="input-group">
@@ -186,4 +188,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage; 
+export default RegisterPage;

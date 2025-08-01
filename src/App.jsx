@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
 import RoleSelector from "./pages/Auth/RoleSelector";
@@ -22,16 +22,18 @@ import CandidateHelpDocs from "./pages/candidate/HelpDocs";
 import "./index.css";
 import "./styles/glass-ui.css";
 
-const App = () => (
-  <Router>
-    <Routes>
+function App() {
+  console.log("App is rendering...");
 
+  return (
+    <Routes>
+      
       <Route path="/" element={<Navigate to="/select-role" replace />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/select-role" element={<RoleSelector />} />
 
-
+     
       <Route element={<ProtectedRoute allowedRoles={["recruiter"]} />}>
         <Route path="/recruiter" element={<RecruiterLayout />}>
           <Route index element={<RecruiterDashboard />} />
@@ -41,11 +43,12 @@ const App = () => (
           <Route path="responses" element={<ViewResponses />} />
           <Route path="analytics" element={<Analytics />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="help" element={<RecruiterHelpDocs />} /> {/* Use RecruiterHelpDocs */}
+          <Route path="help" element={<RecruiterHelpDocs />} />
           <Route path="jobs" element={<div>Jobs Page Placeholder</div>} />
         </Route>
       </Route>
 
+    
       <Route element={<ProtectedRoute allowedRoles={["candidate"]} />}>
         <Route path="/candidate" element={<CandidateLayout />}>
           <Route index element={<CandidateDashboard />} />
@@ -53,14 +56,14 @@ const App = () => (
           <Route path="take" element={<TakeAssessment />} />
           <Route path="results" element={<Results />} />
           <Route path="settings" element={<CandidateSettingsPage />} />
-          <Route path="help" element={<CandidateHelpDocs />} /> {/* Use CandidateHelpDocs */}
+          <Route path="help" element={<CandidateHelpDocs />} />
         </Route>
       </Route>
 
+      
       <Route path="*" element={<Navigate to="/login" replace />} />
-
     </Routes>
-  </Router>
-);
+  );
+}
 
 export default App;
