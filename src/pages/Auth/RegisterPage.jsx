@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useLocation } from "react-router-dom";
-import "../../styles/glass-ui.css"; 
-import "../../styles/RegisterPage.css"; 
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "../../styles/glass-ui.css";
+import "../../styles/RegisterPage.css";
 
 const RegisterPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     fullName: "",
     email: "",
@@ -28,7 +29,7 @@ const RegisterPage = () => {
     if (submitAttempted) {
       validateForm();
     }
-  }, [form, submitAttempted]); 
+  }, [form, submitAttempted]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -62,12 +63,30 @@ const RegisterPage = () => {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitAttempted(true);
 
     if (validateForm()) {
-      console.log("Registering user:", form);
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_URL}/api/register`,
+          {
+            username: form.fullName,      // backend expects "username"
+            email: form.email,
+            phone_number: form.phone,     // backend expects "phone_number"
+            password: form.password,
+            role: form.role,
+          }
+        );
+        console.log("Registration successful:", response.data);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("role", form.role);
+        navigate(form.role === "recruiter" ? "/recruiter" : "/candidate");
+      } catch (error) {
+        console.error("Registration failed:", error.response?.data || error.message);
+        setErrors({ api: error.response?.data?.error || "Registration failed. Please try again." });
+      }
     } else {
       console.log("Form has errors, preventing submission.");
     }
@@ -83,7 +102,6 @@ const RegisterPage = () => {
     <div className="glass-page register-page">
       <div className="glass-card register-card">
         <div className="glass-blur" />
-
         <h2 className="glass-title">
           Create {form.role ? `${getRoleTitle(form.role)} Account` : "Account"}
         </h2>
@@ -92,8 +110,7 @@ const RegisterPage = () => {
             Registering as a <span className="highlight-role">{getRoleTitle(form.role)}</span>
           </p>
         )}
-
-
+        {errors.api && <p className="error-message">{errors.api}</p>}
         <form onSubmit={handleSubmit} className="glass-form register-form">
           <div className="input-group">
             <input
@@ -109,7 +126,6 @@ const RegisterPage = () => {
             />
             {errors.fullName && <p id="fullName-error" className="error-message">{errors.fullName}</p>}
           </div>
-
           <div className="input-group">
             <input
               type="email"
@@ -123,7 +139,6 @@ const RegisterPage = () => {
             />
             {errors.email && <p id="email-error" className="error-message">{errors.email}</p>}
           </div>
-
           <div className="input-group">
             <input
               type="tel"
@@ -137,7 +152,6 @@ const RegisterPage = () => {
             />
             {errors.phone && <p id="phone-error" className="error-message">{errors.phone}</p>}
           </div>
-
           <div className="input-group">
             <input
               type="password"
@@ -151,7 +165,6 @@ const RegisterPage = () => {
             />
             {errors.password && <p id="password-error" className="error-message">{errors.password}</p>}
           </div>
-
           <div className="input-group">
             <input
               type="password"
@@ -165,12 +178,10 @@ const RegisterPage = () => {
             />
             {errors.confirmPassword && <p id="confirmPassword-error" className="error-message">{errors.confirmPassword}</p>}
           </div>
-
           <button type="submit" className="glass-button primary register-button">
             Register
           </button>
         </form>
-
         <p className="glass-footer">
           Already have an account? <Link to="/login" className="glass-link">Login</Link>
         </p>
@@ -179,4 +190,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage; 
+export default RegisterPage;
